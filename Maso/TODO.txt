@@ -1,0 +1,36 @@
+﻿TODO
+   - Post Image with workout
+
+BACKLOG
+
+v1.5
+   - 5s countdown before start
+   - Run (record *after* run, I use a watch!)
+   - Rest pass automatically
+   - Bug Fix
+v1.4
+   - Create and respond to comment
+   - View PB during exercice
+   - View where you are compare to your PB
+v1.3
+  - View comments
+  - View image in feed
+  - Choose variant in free workout and exercices
+  - Should support more (all?) Free Workouts
+v1.2
+   - Record time per exercice in workouts
+   - Free training added
+   - Switch to 2x2
+v1.1
+   - First public beta.
+
+
+ID
+ - Nico : 4990787
+ - Francois : 4891781
+
+
+
+------WebKitFormBoundaryl4S5bhnVDevhzrww
+Content-Disposition: form-data; name="training[picture]"; filename="picture.png"
+Content-Type: image/png

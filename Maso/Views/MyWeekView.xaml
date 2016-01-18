@@ -1,0 +1,71 @@
+﻿<Page
+    x:Class="Maso.Views.MyWeekView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Maso.Views"
+    xmlns:controls="using:Maso.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Maso.ViewModels"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance Type=vm:MyWeekViewModel, IsDesignTimeCreatable=True}"
+    xmlns:caliburn="using:Caliburn.Micro"
+    caliburn:Bind.AtDesignTime="True"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="Maso - Coach" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock x:Name="Title" Text="MY WEEK" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <controls:PullToRefreshListView x:Name="Trainings" 
+                      caliburn:Message.Attach="[Event RefreshContent] = [Action RefreshData(false)]"
+                      ArrowColor="White" HorizontalAlignment="Stretch"
+                      HorizontalContentAlignment="Stretch" >
+                <controls:PullToRefreshListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </controls:PullToRefreshListView.ItemContainerStyle>
+            </controls:PullToRefreshListView>
+            <Border x:Name="NoCoach" HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+                <TextBlock FontSize="30">You don't have a coach.</TextBlock>
+            </Border>
+        </Grid>
+
+        <StackPanel Grid.Row="2" x:Name="AllDone">
+            <Button Margin="10,0,10,0" x:Name="FinishWeek" Height="70"
+                HorizontalAlignment="Stretch" Background="#FF2084F0" 
+                BorderBrush="#FF2084F0">Finish Week</Button>
+        </StackPanel>
+    </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Label="Coach" Icon="Home" IsEnabled="False"></AppBarButton>
+                <AppBarButton Label="People" Icon="People" x:Name="GotoNews"></AppBarButton>
+                <AppBarButton Label="Training" x:Name="GotoFreeTraining">
+                    <AppBarButton.Icon>
+                        <BitmapIcon UriSource="ms-appx:///Assets/workout.png"/>
+                    </AppBarButton.Icon>
+                </AppBarButton>
+                <AppBarButton Label="About" Icon="Help" x:Name="About" />
+            </CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Name="Disconnect" Label="Disconnect"></AppBarButton>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

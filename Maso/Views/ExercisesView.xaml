@@ -1,0 +1,34 @@
+﻿<UserControl
+    x:Class="Maso.Views.ExercisesView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Maso.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Maso.ViewModels"
+    xmlns:caliburn="using:Caliburn.Micro"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance Type=vm:ExercisesViewModel, IsDesignTimeCreatable=True}"
+    caliburn:Bind.AtDesignTime="True" 
+    d:DesignHeight="182.731" d:DesignWidth="335.359">
+
+    <Grid Margin="5">
+        <Grid.Background>
+            <SolidColorBrush Color="#FF747474"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Margin="5">
+            <Image Height="60" Width="100" x:Name="Image" VerticalAlignment="Center" />
+        </Grid>
+        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+            <TextBlock x:Name="Title" Margin="10,0,0,0" Style="{ThemeResource TitleTextBlockStyle}"
+                       VerticalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
