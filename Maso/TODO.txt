@@ -1,5 +1,5 @@
 ﻿TODO
-   - Post Image with workout
+   - Progress in workouts
 
 BACKLOG
 
@@ -24,13 +24,3 @@ v1.2
 v1.1
    - First public beta.
 
-
-ID
- - Nico : 4990787
- - Francois : 4891781
-
-
-
-------WebKitFormBoundaryl4S5bhnVDevhzrww
-Content-Disposition: form-data; name="training[picture]"; filename="picture.png"
-Content-Type: image/png
