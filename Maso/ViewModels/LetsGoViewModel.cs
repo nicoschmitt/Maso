@@ -18,14 +18,16 @@ namespace Maso.ViewModels
         private Windows.System.Display.DisplayRequest displayRequest;
         private ExercisesViewModel[] exos;
 
-        private string slug, chrono, image, description, bestTime, pbVariation;
+        private string slug, chrono, image, description, bestTime, pbVariation, progression;
         private DateTime startedAt, finishedAt, startRest;
         private bool finished, working, star, canSendData, countdown, isCoach;
         private bool coachWasEasy, coachWasOk, coachWasHard;
         private ExercisesViewModel current;
         private string gotext;
-        private int idx = -1, howhard;
+        private int idx = -1, howhard, idxStruct1 = 1, idxStruct2 = 0;
         private DateTime currentTimeStart;
+
+        public List<int> WorkoutStructure { get; set; }
 
         public int TrainingId { get; set; }
 
@@ -97,6 +99,16 @@ namespace Maso.ViewModels
             {
                 gotext = value;
                 this.NotifyOfPropertyChange(() => GoText);
+            }
+        }
+
+        public string Progression
+        {
+            get { return progression; }
+            set
+            {
+                progression = value;
+                this.NotifyOfPropertyChange(() => Progression);
             }
         }
 
@@ -240,10 +252,11 @@ namespace Maso.ViewModels
 #if DEBUG
             if (Execute.InDesignMode)
             {
+                Progression = "Round 1/4. Excercice 3/5.";
                 CurrentExercise = new ExercisesViewModel() { Slug = "burpees", Title = "10X Burpees", Image = "https://d2t4u40hiq4b70.cloudfront.net/videos/v2/burpees-96x54.jpg" };
 
-                Working = false;
-                Finished = true;
+                Working = true;
+                Finished = false;
                 BestTime = "PB: 03:10";
                 PBVariation = "(-3)";
                 IsCoach = true;
@@ -292,7 +305,20 @@ namespace Maso.ViewModels
                 }
 
                 exos = workout.Exercises.Where(w => w.Slug != null).ToArray();
-                
+                var structure = new List<int>();
+                foreach(var exo in workout.Exercises)
+                {
+                    if (exo is ExerciesSeparatorViewModel)
+                    {
+                        structure.Add(0);
+                    }
+                    else
+                    {
+                        structure[structure.Count - 1]++; 
+                    }
+                }
+                WorkoutStructure = structure;
+
                 CurrentExercise = exos.First();
 
                 try
@@ -454,11 +480,22 @@ namespace Maso.ViewModels
                 var next = new string[] { "Ok, next!", "Bring it!", "That did not hurt!", "I want more", "I'm still breathing!" };
                 GoText = next[new Random().Next(next.Length)];
                 CurrentExercise = exos[idx++];
+
+                if (WorkoutStructure[idxStruct1 - 1] == idxStruct2)
+                {
+                    idxStruct1++;
+                    idxStruct2 = 1;
+                }
+                else
+                {
+                    idxStruct2++;
+                }
             }
             else if (idx == exos.Length - 1)
             {
                 GoText = "FINISH";
                 CurrentExercise = exos[idx++];
+                idxStruct2++;
             }
             else
             {
@@ -474,6 +511,13 @@ namespace Maso.ViewModels
             {
                 startRest = DateTime.Now;
             }
+
+            DisplayProgression();
+        }
+
+        private void DisplayProgression()
+        {
+            Progression = string.Format("Round {0}/{1}. Exercice {2}/{3}.", idxStruct1, WorkoutStructure.Count, idxStruct2, WorkoutStructure[idxStruct1 - 1]);
         }
 
         protected async void SendData()

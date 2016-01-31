@@ -94,6 +94,7 @@
             </Grid>
             <Grid x:Name="Working" VerticalAlignment="Center" HorizontalAlignment="Stretch">
                 <StackPanel>
+                    <TextBlock x:Name="Progression" Margin="10,5" FontSize="12" />
                     <ContentControl x:Name="CurrentExercise" Margin="5"
                                     HorizontalContentAlignment="Stretch"
                                     HorizontalAlignment="Stretch"></ContentControl>

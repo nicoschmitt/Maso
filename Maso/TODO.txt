@@ -1,8 +1,13 @@
 ﻿TODO
-   - Progress in workouts
+   - Send photo
 
 BACKLOG
 
+v1.7
+  - Show progress inside a workout
+  - New open source, send an email to maso.app@outlook.com if interested
+v1.6
+   - Welcome to the new coach
 v1.5
    - 5s countdown before start
    - Run (record *after* run, I use a watch!)
@@ -23,4 +28,3 @@ v1.2
    - Switch to 2x2
 v1.1
    - First public beta.
-

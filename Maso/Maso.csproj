@@ -192,7 +192,7 @@
     </Content>
     <Content Include="Assets\workout.png" />
     <Content Include="debug-credentials.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="VoiceCommandDefinition.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -200,6 +200,7 @@
     </Content>
     <None Include="app.config" />
     <None Include="Assets\DigiCert_certs.zip" />
+    <None Include="debug-credentials.local.json" />
     <None Include="TODO.txt" />
     <None Include="Package.StoreAssociation.xml" />
     <None Include="Service References\Application Insights\ConnectedService.json" />
@@ -337,10 +338,18 @@
   <PropertyGroup Condition=" '$(TargetPlatformIdentifier)' == '' ">
     <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
+    <PreBuildEvent>if $(ConfigurationName) == Debug xcopy /Y $(ProjectDir)debug-credentials.local.json $(ProjectDir)debug-credentials.json
+
+if $(ConfigurationName) == Release break&gt;$(ProjectDir)debug-credentials.json</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

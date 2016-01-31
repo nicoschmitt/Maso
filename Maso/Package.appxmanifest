@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="18129NicolasSchmitt.Sado" Publisher="CN=076CA264-E823-4B8F-A10C-FC056F3E99E5" Version="1.6.5.0" />
+  <Identity Name="18129NicolasSchmitt.Sado" Publisher="CN=076CA264-E823-4B8F-A10C-FC056F3E99E5" Version="1.7.0.0" />
   <mp:PhoneIdentity PhoneProductId="e5ccce8e-75db-4975-bc46-9f4b9a2888f0" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Maso</DisplayName>

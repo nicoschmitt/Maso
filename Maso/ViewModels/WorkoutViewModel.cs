@@ -86,7 +86,6 @@ namespace Maso.ViewModels
                 }
                 else if (!string.IsNullOrWhiteSpace(Time))
                 {
-                    //return Color.FromArgb(255, 60, 197, 255);
                     return Color.FromArgb(255, 128, 128, 128);
                 }
                 else

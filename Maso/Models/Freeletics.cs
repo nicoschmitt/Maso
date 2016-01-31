@@ -85,7 +85,7 @@ namespace Maso.Models
         public async Task<bool> Login(string username, string password)
         {
 #if DEBUG
-            // For debugging purposes, create a "debug-credentials.json into the project directory and set your info like this:
+            // For debugging purposes, create a "debug-credentials.json" and "debug-credentials.local.json" file into the project directory and set your info like this:
             // { "UserName" : "your.email@domain.com", "Password" : "*********" }
             try
             {
